@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="" />
+    <style>
+        #fs{
+            width:300px;
+            height:300px;
+        }
+    </style>
+</head>
+    <body>
+        <fieldset id="fs">
+             <input id="inn" type="text"  placeholder="请输入想查找的商品" style="height:30px ;width:200px">
+             <input id="search" type="submit" value="搜索" style="height:30px;width: 100px"/>
+        最近搜索
+        <div id="market">
+            <p id="print"></p>
+        </div>
+        <button id="delete1" style="margin-left:300px;">X</button>
+        </fieldset>
+    </body>
+        <script>
+             var times = Date.parse(new Date());
+             var print= document.getElementById("print");
+             var delete1=document.getElementById("delete1");
+             var inn=document.getElementById("inn");
+             var search=document.getElementById("search");
+        search.onclick=function(){
+                localStorage.setItem(times,inn.value);
+                var gi = localStorage.getItem(times);
+                print.innerHTML ="<mark>"+gi+"</mark>"+"&nbsp;&nbsp;&nbsp;"+print.innerHTML;
+        }
+        delete1.onclick=function(){
+            var delete1 = document.getElementById('delete1');
+                if(window.confirm("是否清除全部数据")){
+                    localStorage.clear();
+                    print.innerHTML = null;
+                }
+        }
+        </script>
+</html>
