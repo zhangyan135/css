@@ -22,15 +22,33 @@
         </fieldset>
     </body>
         <script>
-             var times = Date.parse(new Date());
+             
              var print= document.getElementById("print");
              var delete1=document.getElementById("delete1");
-             var inn=document.getElementById("inn");
+            
              var search=document.getElementById("search");
         search.onclick=function(){
+            var times = Date.parse(new Date());
+            var inn=document.getElementById("inn");
+                if(localStorage.length==0){
+                    print.innerHTML="<mark>"+localStorage.getItem(localStorage.key(0))+"</mark>"+"&nbsp;&nbsp;&nbsp;"
+                    localStorage.setItem(times,inn.value);
+                }
+                else{
                 localStorage.setItem(times,inn.value);
                 var gi = localStorage.getItem(times);
-                print.innerHTML ="<mark>"+gi+"</mark>"+"&nbsp;&nbsp;&nbsp;"+print.innerHTML;
+                var key =0;
+                for(var i=1;i<=localStorage.length&&key==0;i++){                   
+                    if(gi==localStorage.getItem(localStorage.key(i-2))){                      
+                        localStorage.removeItem(localStorage.key(localStorage.length-1));
+                        key=1;
+                     }
+                    if (gi!=localStorage.getItem(localStorage.key(i-1))&&i==(localStorage.length-1))
+                      {                        
+                         print.innerHTML="<mark>"+gi+"</mark>"+"&nbsp;&nbsp;&nbsp;"+print.innerHTML;                 
+                    }                   
+                }
+            }
         }
         delete1.onclick=function(){
             var delete1 = document.getElementById('delete1');
