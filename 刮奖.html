@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>刮奖</title>
+    <style>
+        canvas {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+<script>
+    var str=["一等奖","二等奖","三等奖","谢谢参与"];
+    var canvas = document.getElementById("canvas");
+    var context = canvas.getContext("2d"); 
+   
+    context.fillStyle="#D1D1D1";
+    context.fillRect(0, 0, 200,150); 
+    var index=Math.floor(Math.random()*str.length);
+    canvas.onclick=function(ev){
+        context.globalCompositeOperation = 'destination-over'; 
+        context.font = "bold 35px 楷体";
+        var txt =str[index];
+        context.fillText(txt, 30, 80); 
+        context.globalCompositeOperation = 'destination-out';
+	    context.beginPath(); 
+	    context.arc(ev.clientX+ canvas.offsetLeft,ev.clientY+ canvas.offsetTop, 20, 0, Math.PI * 2); 
+	    context.closePath(); 
+        context.fill();
+        var imgData = context.getImageData(0, 0, 200, 100); 
+	    var data = imgData.data; 
+	    var length = data.length; 
+	    var transparent = 0; 
+	    for (var i = 0; i < length; i += 4) { 
+		    var alpha = data[i + 3]; 
+		    if (alpha < 10) 
+			    transparent++;
+	    }
+	    var percentage = transparent / (length / 4); 
+	    if (percentage > 0.8) 
+		    alert("刮奖结束！");
+    }
+</script>
+</body>
+</html>
