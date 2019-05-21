@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #con{
+            width: 300px;
+            height: 500px;
+            border: 2px gray solid;
+            position: relative;
+            overflow: hidden;
+        }
+        #con:hover{
+           border:4px gray solid;
+        }
+        #con:hover div{
+            margin-top:-150px;
+            width:300px;
+            height: 290px;
+            background-color:white;
+            transition-duration :1s;
+        }
+        #con:hover img{
+            transform: scale(1.5,1.5);
+            transition: transform 1s ease-in-out;
+            opacity: 0.8;
+        }
+        #introduce{
+            width: 300px;
+            height: 100px;
+            overflow: hidden;
+            position: absolute;
+            transition-duration :1s;
+        }
+        #con img{
+            transform: scale(1,1);
+            transition-duration :1s;
+        }
+    </style>
+</head>
+<body>
+    <div id="con">
+        <img src="zhanqiao.jpg" alt="" width="300px" height="300px">  
+    <div id="introduce">              
+        <h2>青岛栈桥</h2>
+        <h3 style="color:red">国家AAAA级景区</h3>
+        <p style="color: gray;">栈桥是青岛的象征，是青岛人的骄傲，它位于青岛湾，全长440米，宽8米。20世纪30年代栈桥曾被誉为青岛市内十景之首、
+            青岛二十四景之一，不少文人墨客都曾写过赞美她的诗词，国内外的重要宾客、知名人士来青岛观光时，都要登临栈桥，
+            欣赏海滨风光，驰名中外的青岛啤酒商标便是以栈桥为图案设计而成的。
+        </p>
+    </div>
+    <p style="margin-top:170px;margin-left:30px;color:gray;">10分钟前 &nbsp; &nbsp; &nbsp; &nbsp;123评论</p>
+</div>
+</body>
+
+</html>
